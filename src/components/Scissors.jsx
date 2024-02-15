@@ -1,9 +1,18 @@
 import React from 'react';
+import './../App.css'
 
 const Scissors = (props) => {
     return (
-        <button onClick={()=>props.choiceFunction("scissors")} className='scissorsButton aspect-square bg-white border-[25px] border-yellow-300 rounded-full flex justify-center items-center'>
-            <img src={props.ScissorsIcon} alt="" className='w-[50%]'/>
+        <button onClick={()=>props.choiceFunction("scissors")} 
+        className={`scissorsButton aspect-square rounded-full flex justify-center items-center 
+        ${props.displayMiddle == true && props.choice == "scissors" ? `youWinLeft` : ``} 
+        ${props.displayMiddle == true && props.choice != "scissors" ? `youWinRight` : ``} 
+        ${props.choice != "scissors" && props.houseDisplay == true ? `houseDisplay`:``} 
+        ${props.choice == "scissors" ? `yourDisplay` : ``}`}>
+            
+            <div className='flex justify-center items-center bg-white w-[75%] h-[75%] rounded-full'>
+                <img src={props.ScissorsIcon} alt="" className='w-[50%]'/>
+            </div>
         </button>
     );
 }
