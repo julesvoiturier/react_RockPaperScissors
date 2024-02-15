@@ -68,3 +68,8 @@
     margin: 30px;
     z-index: 1;
 }
+
+.appear{
+    display: flex !important;
+    z-index: 2;
+}

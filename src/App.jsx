@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Rock from './components/Rock'
 import Paper from './components/Paper'
 import Scissors from './components/Scissors'
 import TopBar from './components/TopBar'
 import RulesButton from './components/RulesButton'
+import YouWin from './components/YouWin'
 
 //! IMAGES IMPORTS:
 import RockIcon from './assets/images/icon-rock.svg'
@@ -12,7 +13,7 @@ import PaperIcon from './assets/images/icon-paper.svg'
 import ScissorsIcon from './assets/images/icon-scissors.svg'
 import BgTriangle from './assets/images/bg-triangle.svg'
 import Title from './assets/images/logo.svg'
-import YouWin from './components/YouWin'
+import Modal from './assets/images/image-rules.svg'
 
 
 
@@ -46,62 +47,56 @@ function App() {
     console.log(choice);
     setUnclickable(true)
     setHouseDisplay(true)
+
+    let randomizer = Math.floor(Math.random() *  3)
+    let otherChoice = choices[randomizer]
+    setHouseChoice(choices[randomizer])
+
     setTimeout(() => {
       setDisplayMiddle(true)
 
-    }, 2000);
+      if (x == "paper") {
+        fight1(otherChoice)
+      } else if (x == "rock") {
+        fight2(otherChoice)
+      } else if (x == "scissors") {
+        fight3(otherChoice)
+      }
 
-    let randomizer = Math.floor(Math.random() *  3)
-    switch (randomizer) {
-      case 0:
-        setHouseChoice(choices[0])
-        break;
-      case 1:
-        setHouseChoice(choices[1])
-        break;
-      case 2:
-        setHouseChoice(choices[2])
-        break;
-    }
-
-    if (choice == "paper") {
-      fight1()
-    } else if (choice == "rock") {
-      fight2()
-    } else if (choice == "scissors") {
-      fight3()
-    }
+    }, 1500);
   }
 
   //! FIGHT FUNCTION
-  let fight1 = () => {
-    if (houseChoice == "scissors") {
-      setPoints(-1)
+  let fight1 = (x) => {
+    if (x == "scissors") {
+      setPoints(points -1)
+      console.log(points);
       setResult("You Loose")
-    } else if (houseChoice == "rock") {
-      setPoints(+1)
+    } else if (x == "rock") {
+      setPoints(points +1)
+      console.log(points);
+      setResult("You Win")
+    } else if (x == "paper"){
+      setResult("draw")
+    }
+  }
+  let fight2 = (x) => {
+    if (x == "paper") {
+      setPoints(points -1)
+      setResult("You Loose")
+    } else if (x == "scissors") {
+      setPoints(points +1)
       setResult("You Win")
     } else {
       setResult("draw")
     }
   }
-  let fight2 = () => {
-    if (houseChoice == "paper") {
-      setPoints(-1)
+  let fight3 = (x) => {
+    if (x == "rock") {
+      setPoints(points-1)
       setResult("You Loose")
-    } else if (houseChoice == "scissors") {
-      setPoints(+1)
-      setResult("You Win")
-    } else {
-      setResult("draw")
-    }
-  }
-  let fight3 = () => {
-    if (houseChoice == "rock") {
-      setPoints(-1)
-      setResult("You Loose")
-    } else if (houseChoice == "paper") {
-      setPoints(+1)
+    } else if (x == "paper") {
+      setPoints(points +1)
       setResult("You Win")
     } else {
       setResult("draw")
@@ -135,7 +130,7 @@ function App() {
           </div>
         }
 
-        <RulesButton/>
+        <RulesButton Modal={Modal}/>
   
       </div>
     </div>
