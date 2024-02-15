@@ -1,0 +1,33 @@
+.iconContainer{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.paperButton{
+    grid-row: 1/5;
+    grid-column: 1/5;
+    margin: 30px;
+    z-index: 1;
+}
+
+.scissorsButton{
+    grid-row: 1/5;
+    grid-column: 5/9;
+    margin: 30px;
+    z-index: 1;
+}
+
+.rockButton{
+    grid-row: 4/6;
+    grid-column: 3/7;
+    margin: 30px;
+    z-index: 1;
+}
+
+.bgTriangle{
+    grid-row: 3/5;
+    grid-column: 3/7;
+    transform: scale(120%);
+
+}

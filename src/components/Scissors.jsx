@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Scissors = () => {
+const Scissors = (props) => {
     return (
-        <div>
-            Scissors
-        </div>
+        <button onClick={()=>props.choiceFunction("scissors")} className='scissorsButton aspect-square bg-white border-[25px] border-yellow-300 rounded-full flex justify-center items-center'>
+            <img src={props.ScissorsIcon} alt="" className='w-[50%]'/>
+        </button>
     );
 }
 
