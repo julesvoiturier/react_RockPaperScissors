@@ -14,6 +14,7 @@ import ScissorsIcon from './assets/images/icon-scissors.svg'
 import BgTriangle from './assets/images/bg-triangle.svg'
 import Title from './assets/images/logo.svg'
 import Modal from './assets/images/image-rules.svg'
+import Close from './assets/images/icon-close.svg'
 
 
 
@@ -30,14 +31,19 @@ function App() {
   const [result, setResult] = useState("")
 
 
-  //! RESTART FUNCTION
-  let restart =()=> {
+
+  //! NEW ROUND FUNCTION
+  let restart =(x)=> {
     setChoice("")
     setHouseChoice("")
     setUnclickable(false)
     setHouseDisplay(false)
     setDisplayMiddle(false)
     setResult("")
+    if (x == "newGame") {
+      setPoints(0)
+      alert("YOU WON THE GAME")
+    }
   }
 
   //! CHOOSING FUNCTION
@@ -63,7 +69,7 @@ function App() {
         fight3(otherChoice)
       }
 
-    }, 1500);
+    }, 1000);
   }
 
   //! FIGHT FUNCTION
@@ -71,38 +77,55 @@ function App() {
     if (x == "scissors") {
       setPoints(points -1)
       console.log(points);
-      setResult("You Loose")
+      setResult("YOU LOOSE")
+      if (points < 1) {
+        setPoints(0)
+      }
     } else if (x == "rock") {
       setPoints(points +1)
       console.log(points);
-      setResult("You Win")
+      setResult("YOU WIN")
+      if (points == 2) {
+        restart("newGame")
+      }
     } else if (x == "paper"){
-      setResult("draw")
+      setResult("DRAW")
     }
   }
   let fight2 = (x) => {
     if (x == "paper") {
       setPoints(points -1)
-      setResult("You Loose")
+      setResult("YOU LOOSE")
+      if (points < 1) {
+        setPoints(0)
+      }
     } else if (x == "scissors") {
       setPoints(points +1)
-      setResult("You Win")
+      setResult("YOU WIN")
+      if (points == 2) {
+        restart("newGame")
+      }
     } else {
-      setResult("draw")
+      setResult("DRAW")
     }
   }
   let fight3 = (x) => {
     if (x == "rock") {
       setPoints(points-1)
-      setResult("You Loose")
+      setResult("YOU LOOSE")
+      if (points < 1) {
+        setPoints(0)
+      }
     } else if (x == "paper") {
       setPoints(points +1)
-      setResult("You Win")
+      setResult("YOU WIN")
+      if (points == 2) {
+        restart("newGame")
+      }
     } else {
-      setResult("draw")
+      setResult("DRAW")
     }
   }
-
   //! APP JSX RETURN
   return (
     <div className='w-screen h-screen bg-[#1f3756]'>
@@ -130,7 +153,7 @@ function App() {
           </div>
         }
 
-        <RulesButton Modal={Modal}/>
+        <RulesButton Modal={Modal} Close={Close}/>
   
       </div>
     </div>
