@@ -42,7 +42,7 @@ function App() {
     setResult("")
     if (x == "newGame") {
       setPoints(0)
-      alert("YOU WON THE GAME")
+      alert("YOU WON THE GAME, PRESS ENTER TO START AGAIN")
     }
   }
 

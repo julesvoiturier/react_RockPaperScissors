@@ -17,7 +17,7 @@ const RulesButton = (props) => {
                     <button onClick={()=> modalDisplay()} className='absolute top-[30px] right-[30px]'><img src={props.Close} alt="" /></button>
                 </div>
             </div>
-            <button onClick={()=> modalDisplay()} className='border-2 border-white text-white tracking-wider pl-10 pr-10 pt-2 pb-2 rounded-[10px] absolute bottom-[20px] right-[20px]'>RULES</button>
+            <button onClick={()=> modalDisplay()} className=' border-[3px] border-[hsl(217,16%,45%)] text-white tracking-widest pl-10 pr-10 pt-2 pb-2 rounded-[10px] absolute bottom-[20px] right-[20px]'>RULES</button>
         </div>
     );
 }
