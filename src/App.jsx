@@ -51,7 +51,6 @@ function App() {
 
     setChoice(x)
     console.log(choice);
-    setUnclickable(true)
     setHouseDisplay(true)
 
     let randomizer = Math.floor(Math.random() *  3)
@@ -69,7 +68,7 @@ function App() {
         fight3(otherChoice)
       }
 
-    }, 1000);
+    }, 500);
   }
 
   //! FIGHT FUNCTION
@@ -128,7 +127,7 @@ function App() {
   }
   //! APP JSX RETURN
   return (
-    <div className='w-screen h-screen bg-[#1f3756]'>
+    <div className='App w-screen h-[101vh] max-sm:h-[700px] '>
       <div className='w-full h-full flex items-center justify-start flex-col p-12'>
 
         <TopBar points={points} Title={Title}/>
@@ -136,20 +135,20 @@ function App() {
         {
           choice == "" ? 
           <div className='iconContainer w-[80%] h-[700px] mt-[80px]'>
-            <Rock setChoice={setChoice} RockIcon={RockIcon} choiceFunction={choiceFunction}  unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> 
-            <Paper setChoice={setChoice} PaperIcon={PaperIcon} choiceFunction={choiceFunction}  unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/>
-            <Scissors setChoice={setChoice} ScissorsIcon={ScissorsIcon} choiceFunction={choiceFunction}  unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/>
+            <Rock setUnclickable={setUnclickable} setChoice={setChoice} RockIcon={RockIcon} choiceFunction={choiceFunction}  unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> 
+            <Paper setUnclickable={setUnclickable} setChoice={setChoice} PaperIcon={PaperIcon} choiceFunction={choiceFunction}  unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/>
+            <Scissors setUnclickable={setUnclickable} setChoice={setChoice} ScissorsIcon={ScissorsIcon} choiceFunction={choiceFunction}  unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/>
             <img className='bgTriangle' src={BgTriangle} alt="" />
           </div> 
           : 
           <div className='iconContainer w-[80%] h-[700px] mt-[80px]'>
-              {displayMiddle == true ? <YouWin result={result} Restart={restart}/> : ""}
-              {choice == "paper" ? <Paper PaperIcon={PaperIcon} choiceFunction={choiceFunction} choice={choice} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> : ""}
-              {choice == "scissors" ? <Scissors ScissorsIcon={ScissorsIcon} choiceFunction={choiceFunction} choice={choice} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> : ""}
-              {choice == "rock" ? <Rock RockIcon={RockIcon} choiceFunction={choiceFunction} choice={choice} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/>  : ""}
-              {houseChoice == "paper" ? <Paper PaperIcon={PaperIcon} choiceFunction={choiceFunction} unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> : ""}
-              {houseChoice == "scissors" ? <Scissors ScissorsIcon={ScissorsIcon} choiceFunction={choiceFunction} unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> : ""}
-              {houseChoice == "rock" ? <Rock RockIcon={RockIcon} choiceFunction={choiceFunction} unclickable={unclickable} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/>  : ""}
+              {displayMiddle == true ? <YouWin unclickable={unclickable} result={result} Restart={restart}/> : ""}
+              {choice == "paper" ? <Paper unclickable={unclickable} setUnclickable={setUnclickable} PaperIcon={PaperIcon} choiceFunction={choiceFunction} choice={choice} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> : ""}
+              {choice == "scissors" ? <Scissors unclickable={unclickable} setUnclickable={setUnclickable} ScissorsIcon={ScissorsIcon} choiceFunction={choiceFunction} choice={choice} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> : ""}
+              {choice == "rock" ? <Rock unclickable={unclickable} setUnclickable={setUnclickable} RockIcon={RockIcon} choiceFunction={choiceFunction} choice={choice} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/>  : ""}
+              {houseChoice == "paper" ? <Paper unclickable={unclickable} setUnclickable={setUnclickable} PaperIcon={PaperIcon} choiceFunction={choiceFunction} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> : ""}
+              {houseChoice == "scissors" ? <Scissors unclickable={unclickable} setUnclickable={setUnclickable} ScissorsIcon={ScissorsIcon} choiceFunction={choiceFunction} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/> : ""}
+              {houseChoice == "rock" ? <Rock unclickable={unclickable} setUnclickable={setUnclickable} RockIcon={RockIcon} choiceFunction={choiceFunction} houseDisplay={houseDisplay} displayMiddle={displayMiddle}/>  : ""}
           </div>
         }
 
